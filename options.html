@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookmarks Reel – Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <img src="icons/icon48.png" alt="" class="header-logo" />
+      <div>
+        <h1 class="page-title">Bookmarks Reel</h1>
+        <p class="page-subtitle">Settings &amp; Storage Management</p>
+      </div>
+    </header>
+
+    <div id="status" class="notice hidden"></div>
+
+    <!-- ── Crawl Settings ───────────────────────────── -->
+    <section class="card">
+      <h2 class="card-title">Crawl Settings</h2>
+
+      <label class="field">
+        <span class="field-label">Auto-crawl enabled</span>
+        <label class="switch-label">
+          <input type="checkbox" id="enabled" />
+          <span class="switch"></span>
+        </label>
+      </label>
+
+      <label class="field">
+        <span class="field-label">
+          Crawl interval
+          <small>How often screenshots are refreshed when the browser is idle.</small>
+        </span>
+        <div class="input-group">
+          <input type="number" id="crawlInterval" min="5" max="1440" step="5" />
+          <span class="unit">minutes</span>
+        </div>
+      </label>
+
+      <label class="field">
+        <span class="field-label">
+          Idle threshold
+          <small>Browser must be idle for at least this many seconds before crawling starts.</small>
+        </span>
+        <div class="input-group">
+          <input type="number" id="idleThreshold" min="15" max="600" step="5" />
+          <span class="unit">seconds</span>
+        </div>
+      </label>
+
+      <label class="field">
+        <span class="field-label">Skip login pages</span>
+        <label class="switch-label">
+          <input type="checkbox" id="skipLogin" />
+          <span class="switch"></span>
+        </label>
+      </label>
+    </section>
+
+    <!-- ── Storage Settings ─────────────────────────── -->
+    <section class="card">
+      <h2 class="card-title">Storage Settings</h2>
+
+      <label class="field">
+        <span class="field-label">
+          Max screenshots per bookmark
+          <small>Older captures are removed automatically to stay within this limit.</small>
+        </span>
+        <div class="input-group">
+          <input type="number" id="maxImages" min="1" max="50" step="1" />
+          <span class="unit">images</span>
+        </div>
+      </label>
+
+      <label class="field">
+        <span class="field-label">
+          Max screenshot age
+          <small>Screenshots older than this are deleted during the hourly cleanup.</small>
+        </span>
+        <div class="input-group">
+          <input type="number" id="maxAge" min="1" max="365" step="1" />
+          <span class="unit">days</span>
+        </div>
+      </label>
+
+      <label class="field">
+        <span class="field-label">
+          Max total storage
+          <small>When exceeded the oldest 25 % of screenshots are pruned automatically.</small>
+        </span>
+        <div class="input-group">
+          <input type="number" id="maxStorage" min="5" max="500" step="5" />
+          <span class="unit">MB</span>
+        </div>
+      </label>
+
+      <!-- Storage usage meter -->
+      <div class="field storage-meter-wrap">
+        <span class="field-label">Current storage usage</span>
+        <div class="storage-bar-bg">
+          <div class="storage-bar-fill" id="storage-bar-fill"></div>
+        </div>
+        <span id="storage-usage-text" class="storage-usage-text">Calculating…</span>
+      </div>
+    </section>
+
+    <!-- ── Danger zone ───────────────────────────────── -->
+    <section class="card card-danger">
+      <h2 class="card-title">Danger Zone</h2>
+      <p class="danger-desc">The following actions cannot be undone.</p>
+
+      <div class="btn-row">
+        <button id="btn-clear-all" class="btn btn-danger">🗑 Clear All Screenshots</button>
+      </div>
+    </section>
+
+    <!-- ── Save ─────────────────────────────────────── -->
+    <div class="btn-row save-row">
+      <button id="btn-save" class="btn btn-primary">Save Settings</button>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

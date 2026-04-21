@@ -1,0 +1,197 @@
+/* ─── Reset & base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:       #4285f4;
+  --blue-dk:    #1a73e8;
+  --red:        #d93025;
+  --bg:         #f8f9fa;
+  --surface:    #ffffff;
+  --border:     #e0e0e0;
+  --text:       #202124;
+  --text-muted: #5f6368;
+  --radius:     10px;
+  --shadow:     0 1px 6px rgba(0,0,0,.12);
+  --transition: 150ms ease;
+}
+
+body {
+  font-family:  'Segoe UI', system-ui, sans-serif;
+  font-size:    14px;
+  color:        var(--text);
+  background:   var(--bg);
+  min-height:   100vh;
+  padding:      24px 0 40px;
+}
+
+/* ─── Page wrapper ───────────────────────────────────────────────────────────── */
+.page {
+  max-width:  620px;
+  margin:     0 auto;
+  padding:    0 16px;
+  display:    flex;
+  flex-direction: column;
+  gap:        18px;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+.page-header {
+  display:     flex;
+  align-items: center;
+  gap:         14px;
+  padding:     16px 0 4px;
+}
+.header-logo { width: 40px; height: 40px; }
+.page-title  { font-size: 20px; font-weight: 700; color: var(--blue-dk); }
+.page-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* ─── Notice ────────────────────────────────────────────────────────────────── */
+.notice {
+  padding:       10px 14px;
+  border-radius: var(--radius);
+  font-size:     13px;
+  background:    var(--blue);
+  color:         #fff;
+}
+.notice.success { background: #1e8e3e; }
+.notice.error   { background: var(--red); }
+.notice.hidden  { display: none; }
+
+/* ─── Card ──────────────────────────────────────────────────────────────────── */
+.card {
+  background:    var(--surface);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       16px 18px;
+  box-shadow:    var(--shadow);
+  display:       flex;
+  flex-direction: column;
+  gap:           14px;
+}
+.card-title {
+  font-size:   15px;
+  font-weight: 600;
+  color:       var(--blue-dk);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.card-danger { border-color: #fce8e6; }
+.card-danger .card-title { color: var(--red); }
+
+/* ─── Field row ─────────────────────────────────────────────────────────────── */
+.field {
+  display:     flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap:         12px;
+  cursor:      default;
+}
+.field-label {
+  display:     flex;
+  flex-direction: column;
+  gap:         2px;
+  flex:        1;
+}
+.field-label small {
+  font-size:  11px;
+  color:      var(--text-muted);
+  font-weight: 400;
+}
+
+/* ─── Input group ───────────────────────────────────────────────────────────── */
+.input-group {
+  display:       flex;
+  align-items:   center;
+  gap:           6px;
+  flex-shrink:   0;
+}
+.input-group input[type="number"] {
+  width:         70px;
+  padding:       5px 8px;
+  border:        1px solid var(--border);
+  border-radius: 6px;
+  font-size:     13px;
+  text-align:    right;
+  outline:       none;
+}
+.input-group input[type="number"]:focus { border-color: var(--blue); }
+.unit {
+  font-size:  12px;
+  color:      var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ─── Toggle Switch ─────────────────────────────────────────────────────────── */
+.switch-label {
+  display:     flex;
+  align-items: center;
+  gap:         6px;
+  cursor:      pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+.switch-label input { display: none; }
+.switch {
+  position:      relative;
+  width:         40px;
+  height:        22px;
+  background:    #ccc;
+  border-radius: 11px;
+  transition:    background var(--transition);
+}
+.switch::after {
+  content:       '';
+  position:      absolute;
+  width:         18px;
+  height:        18px;
+  border-radius: 50%;
+  background:    #fff;
+  top:           2px;
+  left:          2px;
+  transition:    left var(--transition);
+  box-shadow:    0 1px 3px rgba(0,0,0,.2);
+}
+.switch-label input:checked + .switch { background: var(--blue); }
+.switch-label input:checked + .switch::after { left: 20px; }
+
+/* ─── Storage meter ─────────────────────────────────────────────────────────── */
+.storage-meter-wrap { flex-direction: column; gap: 6px; align-items: flex-start; }
+.storage-bar-bg {
+  width:         100%;
+  height:        8px;
+  background:    var(--border);
+  border-radius: 4px;
+  overflow:      hidden;
+}
+.storage-bar-fill {
+  height:        100%;
+  background:    var(--blue);
+  border-radius: 4px;
+  transition:    width .4s ease;
+  width:         0%;
+}
+.storage-usage-text { font-size: 12px; color: var(--text-muted); }
+
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+.btn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           6px;
+  padding:       8px 16px;
+  border:        none;
+  border-radius: 6px;
+  font-size:     13px;
+  font-weight:   500;
+  cursor:        pointer;
+  transition:    background var(--transition), opacity var(--transition);
+}
+.btn-primary  { background: var(--blue); color: #fff; }
+.btn-primary:hover  { background: var(--blue-dk); }
+.btn-danger   { background: #fce8e6; color: var(--red); }
+.btn-danger:hover   { background: #f5c6c2; }
+.btn:disabled { opacity: .5; cursor: default; }
+
+.btn-row { display: flex; gap: 10px; }
+.save-row { justify-content: flex-end; }
+
+.danger-desc { font-size: 12px; color: var(--text-muted); }
