@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookmarks Reel</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <img src="icons/icon32.png" alt="Bookmarks Reel" class="logo" />
+      <span class="app-title">Bookmarks Reel</span>
+    </div>
+    <div class="header-right">
+      <button id="btn-crawl-all" class="btn btn-primary" title="Crawl all bookmarks now">
+        ↻ Crawl All
+      </button>
+      <a href="options.html" target="_blank" class="btn btn-icon" title="Settings">⚙</a>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Filter bookmarks…" autocomplete="off" />
+    <label class="switch-label" title="Pause / resume all automatic crawling">
+      <input type="checkbox" id="global-toggle" checked />
+      <span class="switch"></span>
+      <span class="switch-text">Auto-crawl</span>
+    </label>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status-bar" class="status-bar hidden"></div>
+
+  <!-- Gallery -->
+  <main id="gallery" class="gallery">
+    <div class="loading-spinner" id="loading">
+      <div class="spinner"></div>
+      <p>Loading bookmarks…</p>
+    </div>
+  </main>
+
+  <!-- Empty state -->
+  <div id="empty-state" class="empty-state hidden">
+    <div class="empty-icon">🔖</div>
+    <p>No bookmarks found, or screenshots have not been taken yet.</p>
+    <p>Click <strong>↻ Crawl All</strong> to capture screenshots now.</p>
+  </div>
+
+  <!-- Card template -->
+  <template id="card-template">
+    <article class="card" data-bookmark-id="">
+      <div class="card-image-wrap">
+        <img class="card-img" src="" alt="" loading="lazy" />
+        <div class="card-overlay">
+          <span class="card-img-counter"></span>
+        </div>
+        <div class="card-actions-overlay">
+          <button class="btn-action btn-crawl-one" title="Capture screenshot now">↻</button>
+          <button class="btn-action btn-clear-one" title="Clear screenshots">🗑</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <img class="favicon" src="" alt="" width="16" height="16" />
+        <div class="card-meta">
+          <a class="card-title" href="#" target="_blank" rel="noopener noreferrer"></a>
+          <span class="card-url"></span>
+        </div>
+        <label class="toggle-wrap" title="Enable / disable automatic crawling for this bookmark">
+          <input type="checkbox" class="card-toggle" checked />
+          <span class="mini-switch"></span>
+        </label>
+      </div>
+    </article>
+  </template>
+
+  <script src="popup.js"></script>
+</body>
+</html>
